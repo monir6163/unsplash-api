@@ -1,9 +1,17 @@
 const searchField = document.getElementById('inputField');
 const showimg = document.getElementById('img-show');
 const message = document.getElementById('error-message');
+const loadAllImage = async () => {
+    const url = `https://api.unsplash.com/photos?client_id=mHoAZX7HArMpwfbIwC_clfnrCRwfXmtLwl9f88gx4fk&query`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayImage(data);
+}
+loadAllImage()
 const loadImage = async () => {
     const searchText = searchField;
     const searchResult = searchText.value;
+    showimg.textContent = "";
     if(searchResult === ""){
         message.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
   Please Search Field Not Empty!!.
