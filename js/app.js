@@ -3,7 +3,7 @@ const showimg = document.getElementById('img-show');
 const message = document.getElementById('error-message');
 const loadImage = async () => {
     const searchText = searchField;
-    const searchResult = searchField.value;
+    const searchResult = searchText.value;
     if(searchResult === ""){
         message.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
   Please Search Field Not Empty!!.
