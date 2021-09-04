@@ -2,12 +2,15 @@ const searchField = document.getElementById('inputField');
 const showimg = document.getElementById('img-show');
 const message = document.getElementById('error-message');
 const loadAllImage = async () => {
+    document.getElementById('spinner').style.display = "block";
     const url = `https://api.unsplash.com/photos?client_id=mHoAZX7HArMpwfbIwC_clfnrCRwfXmtLwl9f88gx4fk&query`;
+
     const res = await fetch(url);
     const data = await res.json();
+    setTimeout(() => { showimg }, 5000);
     displayImage(data);
 }
-loadAllImage()
+loadAllImage();
 const loadImage = async () => {
     const searchText = searchField;
     const searchResult = searchText.value;
@@ -24,7 +27,6 @@ setTimeout(() => { document.getElementById('error-message').style.display = 'non
         const res = await fetch(url);
         const data = await res.json();
         displayImage(data.results);
-        console.log(data)
     }
 }
 const displayImage = (results) => {
